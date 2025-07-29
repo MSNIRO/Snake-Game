@@ -18,9 +18,11 @@ https://github.com/MSNIRO/Snake-Game.git
 
 * D - للتحرك إلى اليمين 
 
-* P - لإيقاف اللعبة مؤقتًا أو استئنافها 
+* P - لإيقاف اللعبة مؤقتًا أو استئنافها
 
-الهدف هو توجيه الثعبان (الرأس O)   و (الجسم o)  لأكل الطعام ( ■ ). 
+* q - للخروج من اللعبة
+
+الهدف هو توجيه الثعبان (الرأس O)   و (الجسم o)  لأكل الطعام (x). 
 
  
 
@@ -104,7 +106,7 @@ https://github.com/MSNIRO/Snake-Game.git
 
 g++ main.cpp game.cpp snake.cpp food.cpp -o SnakeGame.exe 
 
-ثم نشغل الملفSnakeGame.exe. 
+ثم نشغل الملف SnakeGame.exe. 
 
  
 
