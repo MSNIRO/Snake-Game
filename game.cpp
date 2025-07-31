@@ -133,7 +133,7 @@ void Game::Draw() {
 
     // Draw bottom border
     std::cout << "|";
-    for (int i = 0; i < width; i++) std::cout << "═";
+    for (int i = 0; i < width; i++) std::cout << "=";
     std::cout << "|" << std::endl;
 
     // Show score and high score
