@@ -57,14 +57,14 @@ void Game::Run() {
         // Display game over screen
         system("cls");
         SetColor(12);  // Red color
-        std::cout << "|════════════════════|\n"
+        std::cout << "|====================|\n"
                   << "|     GAME OVER!     |\n"
-                  << "|════════════════════|\n"
+                  << "|====================|\n"
                   << "| Score:    " << score << std::setw(13 - std::to_string(score).length()) << "║\n"
-                  << "|════════════════════|\n"
+                  << "|====================|\n"
                   << "| 1. Play Again      |\n"
                   << "| 2. Exit            |\n"
-                  << "|════════════════════|\n";
+                  << "|====================|\n";
 
         SetColor(15);  // White color
         std::cout << "Choice: ";
@@ -77,12 +77,12 @@ void Game::Run() {
 void Game::ShowMenu() {
     system("cls");  // Clear the screen
     SetColor(11);   // Light blue color
-    std::cout << "|════════════════════|\n"
+    std::cout << "|====================|\n"
               << "|    SNAKE GAME      |\n"
-              << "|════════════════════|\n"
+              << "|====================|\n"
               << "| 1. Start Game      |\n"
               << "| 2. Exit            |\n"
-              << "|════════════════════|\n";
+              << "|====================|\n";
 }
 
 // Sets the console text color using Windows API
@@ -97,7 +97,7 @@ void Game::Draw() {
 
     // Draw top border
     std::cout << "|";
-    for (int i = 0; i < width; i++) std::cout << "═";
+    for (int i = 0; i < width; i++) std::cout << "=";
     std::cout << "|" << std::endl;
 
     // Draw game area row by row
