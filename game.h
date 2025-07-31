@@ -6,7 +6,7 @@
 class Game {
 private:
     const int width = 30;   // Width of the game board
-    const int height = 15;  // Height of the game board
+    const int height =15;   // Height of the game board
     Snake snake;            // Snake object that controls snake behavior
     Food food;              // Food object that controls food behavior
     int score;              // Current score of the player

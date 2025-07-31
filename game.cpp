@@ -46,6 +46,7 @@ void Game::Run() {
         while (!gameOver) {  // Game loop continues until gameOver
             Draw();      // Draw the game
             Input();     // Handle user input
+            if (gameOver) break; // Exit the loop immediately if the player press q 
             Logic();     // Update game logic
             Sleep(speed);  // Control game speed
         }
@@ -56,14 +57,14 @@ void Game::Run() {
         // Display game over screen
         system("cls");
         SetColor(12);  // Red color
-        std::cout << "╔════════════════════╗\n"
-                  << "║     GAME OVER!     ║\n"
-                  << "╠════════════════════╣\n"
-                  << "║ Score:    " << score << std::setw(13 - std::to_string(score).length()) << "║\n"
-                  << "╠════════════════════╣\n"
-                  << "║ 1. Play Again      ║\n"
-                  << "║ 2. Exit            ║\n"
-                  << "╚════════════════════╝\n";
+        std::cout << "|════════════════════|\n"
+                  << "|     GAME OVER!     |\n"
+                  << "|════════════════════|\n"
+                  << "| Score:    " << score << std::setw(13 - std::to_string(score).length()) << "║\n"
+                  << "|════════════════════|\n"
+                  << "| 1. Play Again      |\n"
+                  << "| 2. Exit            |\n"
+                  << "|════════════════════|\n";
 
         SetColor(15);  // White color
         std::cout << "Choice: ";
@@ -76,12 +77,12 @@ void Game::Run() {
 void Game::ShowMenu() {
     system("cls");  // Clear the screen
     SetColor(11);   // Light blue color
-    std::cout << "╔════════════════════╗\n"
-              << "║    SNAKE GAME      ║\n"
-              << "╠════════════════════╣\n"
-              << "║ 1. Start Game      ║\n"
-              << "║ 2. Exit            ║\n"
-              << "╚════════════════════╝\n";
+    std::cout << "|════════════════════|\n"
+              << "|    SNAKE GAME      |\n"
+              << "|════════════════════|\n"
+              << "| 1. Start Game      |\n"
+              << "| 2. Exit            |\n"
+              << "|════════════════════|\n";
 }
 
 // Sets the console text color using Windows API
@@ -95,18 +96,18 @@ void Game::Draw() {
     SetColor(15);  // Set default color (white)
 
     // Draw top border
-    std::cout << "╔";
+    std::cout << "|";
     for (int i = 0; i < width; i++) std::cout << "═";
-    std::cout << "╗" << std::endl;
+    std::cout << "|" << std::endl;
 
     // Draw game area row by row
     for (int y = 0; y < height; y++) {
-        std::cout << "║";  // Left wall
+        std::cout << "|";  // Left wall
         for (int x = 0; x < width; x++) {
             // Draw food
             if (x == food.GetFoodPosition().first && y == food.GetFoodPosition().second) {
                 SetColor(12);  // Red for food
-                std::cout << "■";
+                std::cout << "x";
                 SetColor(15);  // Reset color
             }
             else {
@@ -127,13 +128,13 @@ void Game::Draw() {
                 if (!isBodyPart) std::cout << " ";  // Empty space
             }
         }
-        std::cout << "║" << std::endl;  // Right wall
+        std::cout << "|" << std::endl;  // Right wall
     }
 
     // Draw bottom border
-    std::cout << "╚";
+    std::cout << "|";
     for (int i = 0; i < width; i++) std::cout << "═";
-    std::cout << "╝" << std::endl;
+    std::cout << "|" << std::endl;
 
     // Show score and high score
     SetColor(11);  // Light blue color
@@ -145,6 +146,8 @@ void Game::Draw() {
         SetColor(14);  // Yellow
         std::cout << "The Game is Paused (Press p to Resume)" << std::endl;
     }
+    SetColor(14);
+    std::cout << "Press q to Quit" << std::endl;
     SetColor(15);  // Reset color
 }
 
@@ -157,7 +160,8 @@ void Game::Input() {
             case 's': snake.ChangeDirection(Direction::DOWN); break;
             case 'a': snake.ChangeDirection(Direction::LEFT); break;
             case 'd': snake.ChangeDirection(Direction::RIGHT); break;
-            case 'p': ispaused = !ispaused; break;  // Toggle pause
+            case 'p': ispaused = !ispaused; break; 
+            case 'q': gameOver = true; break;
         }
     }
 }
